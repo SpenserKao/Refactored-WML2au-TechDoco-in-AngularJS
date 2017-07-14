@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Australian Profile of WaterML2 version 1.0 - Technical Documentation - 3b-site</title>
+	</head>
+	<body>
+
+	<h1>Scenario: Site documents</h1>
+	<div>
+		<h2>Document information</h2>
+		<p><i>Information about the document itself that provides useful context when evaluating the document's contents.</i></p>
+	</div>
+
+<div>
+	<p>
+	Site documents describe <strong>monitoring points</strong> (geographical places where measurements were observed) and <strong>sites</strong> (which represent a group of related monitoring points). Site documents should be transmitted when a new monitoring point is commissioned or an existing monitoring point changes.
+	</p>
+	<p>
+	You can encode as many sites and monitoring points into one document as you like.
+	</p>
+	<p>
+	A revised site or monitoring point completely replaces the previous definition – there are no partial updates, only complete replacements.
+	</p>
+</div>
+
+<div>
+	<h2>Ratings documents</h2>
+	<p>
+	Ratings documents describe the rating table which explains how volumetric data may be derived from water level.
+	</p>
+	<p>They consist of:</p>
+	<ul>
+		<li>Gauging observations - raw observered measurements which are used to establish a rating table (sometimes referred to as a ratings curve).</li>
+		<li>A rating table - a set of value pairs that relate discharge to level. This table is derived from the gauging observations.</li>
+	</ul>
+	<p>It is not expected that all data providers will have access to ratings data.</p>
+	<p><i>t should be noted that Ratings documents use WaterML2.0 Part 2 - Ratings and Gaugings and Sections, so the XML namespace and schema is different to other files in the Austrailian Profile of WaterML2 which only use WaterML2.0 Part 1.</i></p>
+</div>
+
+<div>
+	<h2>Time series documents</h2>
+	<p>Time series documents describe <strong>time series data</strong> (sequences of measurements) and metadata about:</p>
+	<ul>
+		<li>How to interpret the sequence of data points (<strong>time series metadata</strong>);</li>
+		<li>How the data points were produced (<strong>procedural metadata</strong>); and</li>
+		<li>How to interpret each individual data point (<strong>measurement metadata</strong>).</li>
+	</ul>
+	<p>One long time series can be transmitted in sections. This allows ongoing time series measurements to be transmitted in hourly or daily chunks instead of waiting for the measurements to finish (which could be indefinite) and transmitting years of measurements in one hit.</p>
+
+	<p>Time series data that is improved (for example, a quality control process is run over the data improving the dataset) forms a new time series and must have a new identifier. So two time series exist, the original low quality time series and the later high quality time series.</p>
+
+	<p>Time series data can be revised (for example, to correct errors) – the revised data will completely replace the original data over the time range specified.</p>
+
+	<p>Each time series document must contain only one time series, although that time series can be split across many sections.</p>
+</div>
+
+</body>
+</html>

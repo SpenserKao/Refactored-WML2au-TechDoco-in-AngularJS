@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Australian Profile of WaterML2 version 1.0 - Technical Documentation - 1a-intro</title>
+	</head>
+	<body>
+	
+<h1>Introduction</h1>
+<div>
+	<p>Watercourse discharge data (1a) is supplied using three kinds of documents:</p>
+	<ul>
+		<li><strong>Site documents</strong>, containing contextual information about where measurements were observed.</li>
+		<li><strong>Time series documents</strong>, containing sets of measurement values taken at the monitoring point.</li>
+	</ul>
+	<p>Each kind of document also includes some administrative information, such as what data is being provided, who is providing the data, and how the documents were generated.
+	</p>
+</div>
+
+<div>
+	<h2>Site documents</h2>
+	<p>
+	Site documents describe <strong>monitoring points</strong> (geographical places where measurements were observed) and <strong>sites</strong> (which represent a group of related monitoring points). Site documents should be transmitted when a new monitoring point is commissioned or an existing monitoring point changes.
+	</p>
+	<p>
+	You can encode as many sites and monitoring points into one document as you like.
+	</p>
+	<p>
+	A revised site or monitoring point completely replaces the previous definition – there are no partial updates, only complete replacements.
+	</p>
+</div>
+
+<div>
+	<h2>Time series documents</h2>
+	<p>Time series documents describe <strong>time series data</strong> (sequences of measurements) and metadata about:</p>
+	<ul>
+		<li>How to interpret the sequence of data points (<strong>time series metadata</strong>);</li>
+		<li>How the data points were produced (<strong>procedural metadata</strong>); and</li>
+		<li>How to interpret each individual data point (<strong>measurement metadata</strong>).</li>
+	</ul>
+	<p>One long time series can be transmitted in sections. This allows ongoing time series measurements to be transmitted in hourly or daily chunks instead of waiting for the measurements to finish (which could be indefinite) and transmitting years of measurements in one hit.</p>
+
+	<p>Time series data that is improved (for example, a quality control process is run over the data improving the dataset) forms a new time series and must have a new identifier. So two time series exist, the original low quality time series and the later high quality time series.</p>
+
+	<p>Time series data can be revised (for example, to correct errors) – the revised data will completely replace the original data over the time range specified.</p>
+
+	<p>Each time series document must contain only one time series, although that time series can be split across many sections.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="wml2auApp">
+  <head>
+	<!--
+		Ref:
+			http://stackoverflow.com/questions/15688313/how-can-i-populate-a-select-dropdown-list-from-a-json-feed-with-angularjs
+			https://docs.angularjs.org/api/ng/directive/ngOptions
+			https://docs.angularjs.org/api/ng/filter/filter
+			http://stackoverflow.com/questions/13020821/how-to-load-json-into-my-angular-js-ng-model
+	-->	
+    <meta charset="utf-8">
+    <title>Australian Profile of WaterML2 (WML2AU) - Technical Documentation</title>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+	
+	<script src="http://code.angularjs.org/1.1.5/angular.js"></script> <!-- This version is a must to work for CSS-BASED animation effect!!-->
+
+	<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script-->
+	
+	<!--script src="https://code.angularjs.org/snapshot/angular.min.js"></script>
+	<script src="https://code.angularjs.org/snapshot/angular-animate.js"></script-->	
+		
+	<!--script src="lib/angular.js"></script>
+	<script src="lib/angular-animate.js"></script-->
+	
+	<!--script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script-->
+	<!--script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script-->
+
+	<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"--></script->
+
+	<!--script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"></script-->	
+	<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script-->	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+	<script src="script.js"></script>	
+	<style>
+		div.gradient_test {
+			background: linear-gradient(to right, #66ff99 0%, #0066ff 100%);
+		}
+	</style>	
+  </head>
+  <body>
+	<div class="gradient_test" ng-controller="browseCategory">
+		<h2>Australian Profile of WaterML2 (WML2AU) - Technical Documentation</h2>
+		<hr/>
+		<div>
+			<label for="selCat">Select category:<br/>
+				<select id="selCat" name="selectCategory" style="cursor:pointer"
+					ng-model="myCat" ng-options="cat.category for cat in cats track by cat.id" 
+					ng-change="changingCategorySelection(myCat)"></select>			
+			</label>
+		</div>
+		<br/>
+		<div>
+			<label for="selSubCat">Select subcategory:<br/>
+				<select id="selSubCat" name="selectSubCategory" style="cursor:pointer"
+					ng-model="mySubCat" ng-options="subcat.subcategory for subcat in subcats track by subcat.id"
+					ng-change="changingSubCategorySelection(mySubCat)">
+				</select>	
+			</label>
+		</div>	
+		<hr/>
+		<div class="clearfix">
+<!-- 			<div class="nav" style="background-color:cyan">
+				<a ng-model="mySect" href="#{{mySubCat.id}}-{{s.title}}" 
+					ng-click="gotoAnchor($index)" ng-repeat="s in sections">{{s.title}}<br/></a>
+			
+			</div> -->
+			
+<!-- 			<ul class="nav nav-pills nav-stacked">
+			  <li ng-model="mySect" ng-animate="'animate'" ng-repeat="s in sections" >	
+				<div style="background-color:cyan">
+				<a href="#{{mySubCat.id}}-{{s.title}}" 
+					ng-click="gotoAnchor($index)">{{s.title}}<br/></a>	
+				</div>
+			  </li> 
+			</ul> -->			
+
+			<ul class="nav nav-pills nav-stacked">
+			  <li ng-model="mySect" ng-animate="'animate'" ng-repeat="s in sections" >	
+				<!-- style="background-color:cyan;" -->
+				<div ng-class="{customblue:$index==selectedSectIndex, white:$index!=selectedSectIndex}"
+					ng-click="gotoAnchor($index)" style="cursor:pointer">{{s.title}}</div>	
+			  </li> 
+			</ul>	
+			
+			<div class="content" ng-include="mySect.content"></div>	
+		</div>
+	</div>
+  </body>
+</html>

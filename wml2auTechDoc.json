@@ -1,0 +1,104 @@
+{
+	"wml2auTechDocumentation": 
+	[
+		{
+			"id": 1,
+			"category": "1: Surface water resource information",
+			"subcat":
+				[
+					{
+						"id": "1a",		
+						"subcategory": "1a: Level of a watercourse (other than a water storage), expressed in metres",
+						"section":
+							[
+
+								{
+									"title": "Introduction",
+									"content": "section_content/1a-intro.html"					
+								},
+								{
+									"title": "Site documents",
+									"content": "section_content/1a-site.html"
+								},								
+								{
+									"title": "Time series documents",
+									"content": "section_content/1a-ts.html"
+								}							
+							]
+					},
+					{
+						"id": "1b",		
+						"subcategory": "1b: Discharges of a watercourse (other than a water storage), expressed in cumecs",
+						"section":
+							[
+								{
+									"title": "Introduction",
+									"content": "section_content/1b-intro.html"		
+								},
+								{
+									"title": "Site documents",
+									"content": "section_content/1b-site.html"
+								},
+								{
+									"title": "Ratings documents",
+									"content": "section_content/1b-ratings.html"
+								},
+								{
+									"title": "Time series documents",
+									"content": "section_content/1b-ts.html"
+								}
+							]							
+					}
+				]
+		},
+		{
+			"id": 3,
+			"category": "3: Water storage information",
+			"subcat":
+				[
+					{
+						"id": "3a",		
+						"subcategory": "3a: Level of a major storage, expressed in metres",
+						"section":
+							[
+								{
+									"title": "Introduction",
+									"content": "section_content/3a-intro.html"	
+								},
+								{
+									"title": "Site documents",
+									"content": "section_content/3a-site.html"
+								},
+								{
+									"title": "Time series documents",
+									"content": "section_content/3a-ts.html"
+								}
+							]
+					},
+					{
+						"id": "3b",		
+						"subcategory": "3b: Volume of water in a major storage, expressed in megalitres",
+						"section":
+							[
+								{
+									"title": "Introduction",
+									"content": "section_content/3b-intro.html"
+								},
+								{
+									"title": "Site documents",
+									"content": "section_content/3b-site.html"
+								},
+								{
+									"title": "Ratings documents",
+									"content": "section_content/3b-ratings.html"
+								},
+								{
+									"title": "Time series documents",
+									"content": "section_content/3b-ts.html"
+								}
+							]				
+					}
+				]
+		}	
+	]
+}
