@@ -4,6 +4,10 @@ An Application to Search Flickr with AngularJS as user interface building tool.
 # Execution
 The application currently is hosted by Plunkr, and a public Plunk URL [1] has been created for direct execution.
 
+## Supported internet browsers
+Other than Firefox and Chrome are supported, MS IE is conditional: version 9 and onward.
+MS IE versions' supportability has been verified through MS IE v11's _F12 Developer Tools_ as illustrated by <a href="MSIE-versionCompatibilityTest.docx">MSIE-versionCompatibilityTest.docx</a>
+
 # Code Review
 Two ways of reviewing code: through Plnkr [2] or GitHub [3].
 
