@@ -60,8 +60,8 @@ As screenshot illustrated above, following properties of each image object item 
 |5| FIx a Google Chrome-specific error that is associated with attemp of loading json file from same working directory: "Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https."| N | 
 
 # Reference
-[1] https://run.plnkr.co/plunks/SOtGyMx8D8Pst64cEk2w/ <br/>
-[2] https://embed.plnkr.co/SOtGyMx8D8Pst64cEk2w/ <br/>
+[1] https://run.plnkr.co/plunks/0WEBXtqzTzrJA0pedYPK/ <br/>
+[2] https://embed.plnkr.co/0WEBXtqzTzrJA0pedYPK/ <br/>
 [3] https://github.com/SpenserKao/Search-Flickr-with-AngularJS <br/>
 [4] http://api.flickr.com/services/feeds/photos_public.gne <br/>
 [5] http://code.angularjs.org/1.2.0/angular.js <br/>
