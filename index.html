@@ -1,91 +1,132 @@
 <!DOCTYPE html>
-<html ng-app="wml2auApp">
+<html>
   <head>
-	<!--
-		Ref:
-			http://stackoverflow.com/questions/15688313/how-can-i-populate-a-select-dropdown-list-from-a-json-feed-with-angularjs
-			https://docs.angularjs.org/api/ng/directive/ngOptions
-			https://docs.angularjs.org/api/ng/filter/filter
-			http://stackoverflow.com/questions/13020821/how-to-load-json-into-my-angular-js-ng-model
-	-->	
     <meta charset="utf-8">
-    <title>Australian Profile of WaterML2 (WML2AU) - Technical Documentation</title>
+    <title>Search Flickr with AngularJS</title>
 	<link href="style.css" rel="stylesheet" type="text/css"/>
-	
-	<script src="http://code.angularjs.org/1.1.5/angular.js"></script> <!-- This version is a must to work for CSS-BASED animation effect!!-->
-
-	<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script-->
-	
-	<!--script src="https://code.angularjs.org/snapshot/angular.min.js"></script>
-	<script src="https://code.angularjs.org/snapshot/angular-animate.js"></script-->	
-		
-	<!--script src="lib/angular.js"></script>
-	<script src="lib/angular-animate.js"></script-->
-	
-	<!--script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script-->
-	<!--script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script-->
-
-	<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"--></script->
-
-	<!--script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"></script-->	
-	<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script-->	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
-	<script src="script.js"></script>	
-	<style>
-		div.gradient_test {
-			background: linear-gradient(to right, #66ff99 0%, #0066ff 100%);
-		}
-	</style>	
+	<script src="https://code.angularjs.org/1.1.5/angular.js"></script>	<!-- 1.2.0 -->
+	<script src="app.js"></script>		
   </head>
   <body>
-	<div class="gradient_test" ng-controller="browseCategory">
-		<h2>Australian Profile of WaterML2 (WML2AU) - Technical Documentation</h2>
-		<hr/>
-		<div>
-			<label for="selCat">Select category:<br/>
-				<select id="selCat" name="selectCategory" style="cursor:pointer"
-					ng-model="myCat" ng-options="cat.category for cat in cats track by cat.id" 
-					ng-change="changingCategorySelection(myCat)"></select>			
-			</label>
-		</div>
-		<br/>
-		<div>
-			<label for="selSubCat">Select subcategory:<br/>
-				<select id="selSubCat" name="selectSubCategory" style="cursor:pointer"
-					ng-model="mySubCat" ng-options="subcat.subcategory for subcat in subcats track by subcat.id"
-					ng-change="changingSubCategorySelection(mySubCat)">
-				</select>	
-			</label>
-		</div>	
-		<hr/>
-		<div class="clearfix">
-<!-- 			<div class="nav" style="background-color:cyan">
-				<a ng-model="mySect" href="#{{mySubCat.id}}-{{s.title}}" 
-					ng-click="gotoAnchor($index)" ng-repeat="s in sections">{{s.title}}<br/></a>
-			
-			</div> -->
-			
-<!-- 			<ul class="nav nav-pills nav-stacked">
-			  <li ng-model="mySect" ng-animate="'animate'" ng-repeat="s in sections" >	
-				<div style="background-color:cyan">
-				<a href="#{{mySubCat.id}}-{{s.title}}" 
-					ng-click="gotoAnchor($index)">{{s.title}}<br/></a>	
+	<section class="row" ng-app="formFlickr" ng-controller="FlickrController">
+		<article class="col-md-push-1 col-md-11">
+		
+			<div class="back-solid-white"> 			
+				<div class="breadcrumb">
+					<h1>Search images with FlickrAPI v{{notes[notes.length-1].ver}}&nbsp;&nbsp;&nbsp;&nbsp;	
+						<span>
+							<ul>
+								<li>
+									<a href="#releaseNote" ng-click="selectCommonArea('releaseNote')">Release Note</a>
+								</li>
+								<li>
+									<a href="#ToDo" ng-click="selectCommonArea('toDo')">ToDo</a>
+								</li>
+							</ul>
+						</span>
+					</h1>
 				</div>
-			  </li> 
-			</ul> -->			
-
-			<ul class="nav nav-pills nav-stacked">
-			  <li ng-model="mySect" ng-animate="'animate'" ng-repeat="s in sections" >	
-				<!-- style="background-color:cyan;" -->
-				<div ng-class="{customblue:$index==selectedSectIndex, white:$index!=selectedSectIndex}"
-					ng-click="gotoAnchor($index)" style="cursor:pointer">{{s.title}}</div>	
-			  </li> 
-			</ul>	
 			
-			<div class="content" ng-include="mySect.content"></div>	
-		</div>
-	</div>
+				<div class="app-container back-solid-white" style="position: fixed; top: 70px; left: 6px;">
+					<fieldset class="app-fieldset">
+					<legend class="app-legend">
+						AngularJS flavour
+					</legend>
+					<form name="form" class="validate-form">
+						<input id="searchCriteria"
+							ng-model="searchCriteria.tags"
+							ng-target="form.tags"
+							name="tags"
+							type="text"
+							title="required input"
+							placeholder="Enter key words (tags) separated by a comma."
+							ng-keyup="search(searchCriteria);document.getElementsByName('tags').focus();"
+							required />
+						<br />
+						Search Mode:
+						<input type="radio" name="SearchMode" value="any" />Any Tags
+						<input type="radio" name="SearchMode" value="all" checked />All Tags
+						<br />
+						<input type="button" class="btn btn-default" ng-click="resetForm(form);" value="Reset" />
+						<button type="submit" class="btn btn-primary" ng-click="search(searchCriteria);document.getElementsByName('tags').focus();">
+						Search Flicker
+						</button>
+					</form>
+					</fieldset>
+				</div>
+				
+				<div ng-switch="commonArea" class="common-area">		
+					<div ng-switch-when="releaseNote"> 							
+						<fieldset class="app-fieldset">
+							<legend class="app-legend">
+								Release Note
+							</legend>
+							<table onfocus="console.log('table releasenote')">
+								<thead>
+									<tr>
+										<th>ver.</th>
+										<th>description</th>
+									</tr>
+								</thead>
+								<tr ng-repeat="n in notes | orderBy : '-ver' ">
+									<td>{{n.ver}}</td>
+									<td>{{n.desc}}</td>
+								</tr>
+							</table>
+						</fieldset>
+					</div>		
+					<div ng-switch-when="toDo" class="common-area">
+						<fieldset class="app-fieldset">
+							<legend class="app-legend">
+								ToDo
+							</legend>							
+							<table>
+								<tr ng-repeat="t in todos">
+									<td>{{t}}</td>
+								</tr>
+							</table>
+						</fieldset>
+					</div>		
+					<div ng-switch-when="selectedImage" class="common-area">
+						<fieldset class="app-fieldset" >
+						<legend class="app-legend">
+							More details of selected image
+						</legend>					
+						<table>
+							<tbody>
+								<tr>
+									<th class="imagedetails">link to image of original resolution. (right-click to open in new tab)</th>			
+									<td><a href="{{image}}" onClick="openNewTab({{image}});">{{title}}</a></td>
+								</tr>
+								<tr>
+									<th class="imagedetails">title</th>
+									<td>{{title}}</td>
+								</tr>
+								<tr>
+									<th class="imagedetails">author</th>
+									<td>{{author}}</td>
+								</tr>
+								<tr>
+									<th class="imagedetails">tags</th>
+									<td>{{tags}}</td>
+								</tr>
+							</tbody>
+						</table> 
+						</fieldset>
+					</div>
+					<h3 ng-show="images.items.length > 0" class="thumbnails">
+						{{images.title}}
+					</h3>							
+				</div>
+			</div>
+
+			<div id="images" class="app-container" style="margin-top: 300px; margin-left: 6px;">
+			  <figure class="added-fig" ng-repeat="i in images.items">
+					<img class="added-img" src="{{i.media.m}}" ng-click="clickAnImage(i);"/> 			
+			  </figure>
+			</div>
+			
+		</article> 
+	</section>
   </body>
 </html>
