@@ -12,8 +12,7 @@ MS IE versions' supportability has been verified through MS IE v11's _F12 Develo
 Two ways of reviewing code: through Plnkr [2] or GitHub [3].
 
 # Technologies in use
-AngularJS and HTML combined, the duet fulfill MVC (Model-View-Controller) pattern, where HTML define# Search Flickr with AngularJS
-An Application to Search Flickr with AngularJS as user interface building tool.
+AngularJS and HTML combined, the duet fulfill MVC (Model-View-Controller) pattern, where HTML defines view, and AngularJS implements model and controller.
 
 ## AngularJS
 Angular JS ver 1.2.0 has be utilised in this application, noteworthily following directives have been employed:
