@@ -1,0 +1,22 @@
+Readme.txt
+
+Local Dev Directory:
+C:\Users\spenserk\node.js\AngularJS\ReadingJSONviaAngularJS\WML2au-TechDoco-Refactored-In-AngularJS
+
+Direc test through opening index.html under local dev directory,
+Result -
+OK under Firefoxand
+But not under Chrome, nor MS IE
+
+Test URL after deployment:
+http://sdcvd-wdtfapp01:8090/wml2au-doc-refactored/
+Result -
+It works OK under browser:
+	FirefoxESR and 
+	Chrome
+But not MS IE.
+
+Versions of Browsers used  in teh tests -
+Firefox: ESR 45.5.1
+Chrome: ver 59.0.3071.115 (Official Build) (64-bit)
+MS IE: 11.0.9600.18697
