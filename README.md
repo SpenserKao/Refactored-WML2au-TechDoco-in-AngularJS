@@ -9,6 +9,6 @@ Simply open [1] for execution.
 Either [2] or [3] for code review.  
 
 ## Reference
-[1] https://run.plnkr.co/plunks/3HZbDl/ <br/>
-[2] https://embed.plnkr.co/3HZbDl/<br/>
+[1] https://run.plnkr.co/plunks/mqyBAW/ <br/>
+[2] https://embed.plnkr.co/mqyBAW/<br/>
 [3] https://github.com/SpenserKao/WML2au-TechDoco-Refactored-In-AngularJS<br/>
