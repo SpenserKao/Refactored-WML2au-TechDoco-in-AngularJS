@@ -5,6 +5,9 @@ This is a working process.
 ## Execution
 Simply open [1] for execution.
 
+### Supported Browsers
+Other than Firefox and Chrome, MS IE ver 10 and 11 (Edge) are also supproted.
+
 ## Review 
 Either [2] or [3] for code review.  
 
